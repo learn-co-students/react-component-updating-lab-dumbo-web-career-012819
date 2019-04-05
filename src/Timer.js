@@ -25,6 +25,20 @@ class Timer extends Component {
     clearInterval(this.interval)
   }
 
+  componentDidUpdate() {
+    console.log(this.timer.current);
+    //outputs <section class="Timer" ... > ... </section>
+    console.log(this.timer.current.style.background);
+    //outputs the background color, something like rgb(62, 132, 219)
+  }
+
+  shouldComponentUpdate(nextProps, nextState) {
+    if (this.state.time === nextState.time) {
+      return false
+    }
+    return true
+  }
+
   render() {
     const { time, color, className, logText } = this.state
     return (
